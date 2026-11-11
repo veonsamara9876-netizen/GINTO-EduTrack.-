@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(to top, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url('853666255_1124666796671439_1509377413271908597_n (1).jpg') no-repeat center center / cover;
+  background-attachment: fixed;
+}
+
+/* Custom Login Form Wrapper Styling */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.wrapper {
+  width: 420px;
+  background: #701c1c;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border-radius: 16px;
+  padding: 35px 40px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wrapper h1 {
+  font-size: 32px;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.wrapper .subtitle {
+  font-size: 12px;
+  text-align: center;
+  color: #fcd34d;
+  margin-bottom: 25px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.wrapper .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 20px 0;
+}
+
+.input-box input, .input-box select {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  outline: none;
+  border-radius: 40px;
+  font-size: 15px;
+  color: #fff;
+  padding: 10px 45px 10px 20px;
+  transition: border-color 0.2s ease;
+}
+
+.input-box select option {
+  background: #521313;
+  color: #fff;
+}
+
+.input-box input:focus, .input-box select:focus {
+  border-color: #fcd34d;
+}
+
+.input-box input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input-box i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #fcd34d;
+}
+
+.wrapper .btn {
+  width: 100%;
+  height: 48px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-size: 16px;
+  color: #701c1c;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+}
+
+.wrapper .btn:hover {
+  background: #fcd34d;
+  color: #521313;
+  transform: translateY(-1px);
+}
+
+.wrapper .link {
+  font-size: 13px;
+  text-align: center;
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.link code {
+  background: #521313;
+  color: #fcd34d;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* Print styling rules */
+@page {
+  size: landscape;   /* wider page = more room for the record; can still be changed in the print dialog */
+  margin: 8mm;
+}
+ 
+@media print {
+  html, body { height: auto !important; min-height: 0 !important; }
+  body { background: white !important; color: black !important; }
+  .no-print { display: none !important; }
+  .sidebar-container { display: none !important; }
+  .main-content { margin-left: 0 !important; width: 100% !important; padding: 0 !important; }
+ 
+  /* Remove the scrollbar/arrows and let everything show in full */
+  * { overflow: visible !important; box-shadow: none !important; }
+  *::-webkit-scrollbar { display: none !important; }
+ 
+  /* Shrink the record table to fit the page width, whatever the paper size */
+  .main-content table {
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    font-size: 8px !important;
+    border-collapse: collapse !important;
+  }
+  .main-content th,
+  .main-content td {
+    min-width: 0 !important;
+    width: auto !important;
+    padding: 2px 1px !important;
+    word-break: break-word;
+  }
+  .main-content thead { display: table-header-group; }
+  .main-content tr { page-break-inside: avoid; break-inside: avoid; }
+ 
+  /* Keep the colored cells when printing */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+@media print {
+  .main-content table.summary-table { font-size: 12px !important; }
+  .main-content table.summary-table th,
+  .main-content table.summary-table td { padding: 6px 4px !important; }
+  .main-content .summary-table .w-10 { width: 36px !important; }
+}
+
+/* Content that only appears on paper, never on screen */
+.print-only { display: none; }
+@media print {
+  .print-only { display: block !important; }
+}
+
+/* Dashboard: the page itself never scrolls (sidebar + header stay put; only the content area scrolls) */
+html:has(.dashboard-root), body:has(.dashboard-root) { overflow: hidden; }
+
+@media print {
+  /* ...but let everything flow onto paper when printing */
+  html:has(.dashboard-root), body:has(.dashboard-root) { overflow: visible !important; }
+  .dashboard-root, .dashboard-root > div { height: auto !important; max-height: none !important; }
+}
